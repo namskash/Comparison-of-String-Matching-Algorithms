@@ -1,0 +1,32 @@
+% General testcases:
+* We'll have n number of testcases
+* len(text) will keep increasing until we reach n
+* And for EACH text, the pattern will start from being the best case and progress towards the worst case
+
+	#1. English: 
+	* The pattern will be a full word, starting from L to R of the text
+	* The last case will be pattern not found
+	* Ex:
+		Text	: this is a sample sentence
+		Pattern	: this (and, goes till) sentence
+
+	#2. Binary:
+	* The pattern will be a substring starting from text[0:m] till text[n - m:n]
+	* The last case will be pattern not found
+	* Ex:
+		Text	: 00110110001100110011
+		Pattern	: 10011
+
+	#3. Random characters:
+	* The pattern will be a substring starting from text[0:m] till text[n - m:n]
+	* The last case will be pattern not found
+	* Ex:
+		Text	: huy%&*#gh)-+guw!d@h
+		Pattern	: w!d@h
+
+	#4. DNA sequence matching:
+	* The pattern will be a substring starting from text[0:m] till text[n - m:n]
+	* The last case will be pattern not found
+	* Ex:
+		Text	: AGCTTAGGCTAACCGGTTGGAACC
+		Pattern	: TAGGCT

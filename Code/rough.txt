@@ -1,0 +1,22 @@
+#1. Naive
+	$ Weakness: Bad for repetative letters
+#2. Accelerated Naive
+	-
+#3. Boyer-Moore
+	* Strength: English words
+	$ Weakness: Long patterns with repetative letters (DNA for example)
+#4. Rabin-Karp
+	* Strength: Hashing, rolling hash is fase
+	$ Weakness: misses (bad hash function)
+#5. KMP
+	* Strength: V.fast
+	$ Weakness: pre processing time is a lot. Hence won't be that good for looooong texts without much repetative characters
+#6. FSM
+	* Strength: O(n)
+	$ Weakness: Complicated and long preprocessing time
+#7. Suffix Trie
+	* Strength: O(m)
+	$ Weakness: not in-place
+#8. Suffix Tree
+	* Strength: O(m)
+	$ Weakness: not in-place
