@@ -20,7 +20,7 @@ static bool _unique(string pattern)
 	return 1;
 }
 
-void acceleratedNaive(string text,string pattern)
+int acceleratedNaive(string text,string pattern)
 {
 	int n = text.length();
 	int m = pattern.length();
@@ -32,8 +32,8 @@ void acceleratedNaive(string text,string pattern)
 		{
 			if(j == (m - 1))
 			{
-				cout<<"Pattern found at "<<i - (m - 1)<<endl;
-				return;
+				//cout<<"Pattern found at "<<i - (m - 1)<<endl;
+				return i - (m - 1);
 			}
 			else
 			{
@@ -46,7 +46,8 @@ void acceleratedNaive(string text,string pattern)
 		}
 		i += 1;
 	}
-	cout<<"Pattern not found"<<endl;
+	//cout<<"Pattern not found"<<endl;
+	return -1;
 }
 
 int Naive(string text,string pattern)
@@ -95,7 +96,7 @@ static vector<int> _kmpPrefixFunction(string pattern)
 	return prefix;
 }
 
-void kmp_match(string text,string pattern)
+int kmp_match(string text,string pattern)
 {
 	int n = text.length();
 	int m = pattern.length();
@@ -115,11 +116,12 @@ void kmp_match(string text,string pattern)
 		}
 		if(j == m)
 		{
-			cout<<"Pattern found at "<<i - m<<endl;
-			return;
+			//cout<<"Pattern found at "<<i - m<<endl;
+			return (i - m);
 		}
 	}
-	cout<<"Pattern not found"<<endl;
+	//cout<<"Pattern not found"<<endl;
+	return -1;
 }
 
 static int _getNextState(string pat, int M, int state, int x)
@@ -165,10 +167,10 @@ static void _computeTF(string pat, int M, int TF[][NO_OF_CHARS])
 	}
 }
 
-void fsm(string pat, string txt)
+int fsm(string text, string pat)
 {
 	int M = pat.size();
-	int N = txt.size();
+	int N = text.size();
  
 	int TF[M+1][NO_OF_CHARS];
  
@@ -177,23 +179,24 @@ void fsm(string pat, string txt)
 	int i, state=0;
 	for (i = 0; i < N; i++)
 	{
-		state = TF[state][txt[i]];
+		state = TF[state][text[i]];
 		if (state == M)
 		{
-			cout<<"Pattern found at index "<< i-M+1<<endl;
-			return;
+			//cout<<"Pattern found at index "<<i - M + 1<<endl;
+			return (i - M + 1);
 		}
 	}
-	cout<<"Pattern not found"<<endl;
+	//cout<<"Pattern not found"<<endl;
+	return -1;
 }
 
-void rabinKarp(string pattern,string text,int q)
+int rabinKarp(string text,string pattern,int q)
 {
 	int m = pattern.size();
 	int n = text.size();
 	int i, j;
 	long long p = 0; // hash value for pattern
-	long long t = 0; // hash value for txt
+	long long t = 0; // hash value for text
 	int h = 1;
 	
 	for (i = 0; i < m - 1; i++)
@@ -220,8 +223,8 @@ void rabinKarp(string pattern,string text,int q)
 			}
 			if(j == m)
 			{
-				cout<<"Pattern found at index at "<<i<<endl;
-				return;
+				//cout<<"Pattern found at index at "<<i<<endl;
+				return i;
 			}
 		}
 		if(i < (n - m))
@@ -233,7 +236,8 @@ void rabinKarp(string pattern,string text,int q)
 			}
 		}
 	}
-	cout<<"Pattern not found"<<endl;
+	//cout<<"Pattern not found"<<endl;
+	return -1;
 }
 
 static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m)
@@ -285,7 +289,7 @@ static void _preprocessBadShift(int *shift, int *bpos, string pat, int m)
 	}
 }
 
-void boyerMoore(string text, string pat)
+int boyerMoore(string text, string pat)
 {
 	// s is shift of the pattern with respect to text
 	int s=0, j;
@@ -318,8 +322,8 @@ void boyerMoore(string text, string pat)
 			 will become -1 after the above loop */
 		if (j<0)
 		{
-			cout<<"pattern occurs at shift = "<<s<<endl;
-			return;
+			//cout<<"pattern occurs at shift = "<<s<<endl;
+			return s;
 			//s += shift[0];
 		}
 		else
@@ -327,16 +331,17 @@ void boyerMoore(string text, string pat)
 			  shift[j+1] times  */
 			s += shift[j+1];
 	}
-	cout<<"Pattern not found"<<endl;
+	//cout<<"Pattern not found"<<endl;
+	return -1;
 }
 
-class SuffixTrieNode
+class _SuffixTrieNode
 {
 private:
-	SuffixTrieNode *children[MAX_CHAR];
+	_SuffixTrieNode *children[MAX_CHAR];
 	list<int> *indexes;
 public:
-	SuffixTrieNode() // Constructor
+	_SuffixTrieNode() // Constructor
 	{
 		// Create an empty linked list for indexes of
 		// suffixes starting from this node
@@ -347,39 +352,39 @@ public:
 		  children[i] = NULL;
 	}
  
-	// A recursive function to insert a suffix of the txt
+	// A recursive function to insert a suffix of the text
 	// in subtree rooted with this node
-	void insertSuffix(string suffix, int index);
+	void _insertSuffix(string suffix, int index);
  
 	// A function to search a pattern in subtree rooted
 	// with this node.The function returns pointer to a linked
 	// list containing all indexes where pattern is present.
 	// The returned indexes are indexes of last characters
 	// of matched text.
-	list<int>* search(string pat);
+	list<int>* _Search(string pat);
 };
 
 class SuffixTrie
 {
 private:
-	SuffixTrieNode root;
+	_SuffixTrieNode root;
 public:
 	// Constructor (Builds a trie of suffixes of the given text)
-	SuffixTrie(string txt)
+	SuffixTrie(string text)
 	{
 		// Consider all suffixes of given string and insert
 		// them into the Suffix Trie using recursive function
-		// insertSuffix() in SuffixTrieNode class
-		for (int i = 0; i < txt.length(); i++)
-			root.insertSuffix(txt.substr(i), i);
+		// _insertSuffix() in _SuffixTrieNode class
+		for (int i = 0; i < text.length(); i++)
+			root._insertSuffix(text.substr(i), i);
 	}
  
 	// Function to searches a pattern in this suffix trie.
-	void search(string pat);
+	int _search(string pat);
 };
 
 
-void SuffixTrieNode::insertSuffix(string s, int index)
+void _SuffixTrieNode::_insertSuffix(string s, int index)
 {
 	// Store index in linked list
 	indexes->push_back(index);
@@ -392,14 +397,14 @@ void SuffixTrieNode::insertSuffix(string s, int index)
  
 		// If there is no edge for this character, add a new edge
 		if (children[cIndex] == NULL)
-			children[cIndex] = new SuffixTrieNode();
+			children[cIndex] = new _SuffixTrieNode();
  
 		// Recur for next suffix
-		children[cIndex]->insertSuffix(s.substr(1), index+1);
+		children[cIndex]->_insertSuffix(s.substr(1), index+1);
 	}
 }
 
-list<int>* SuffixTrieNode::search(string s)
+list<int>* _SuffixTrieNode::_Search(string s)
 {
 	// If all characters of pattern have been processed,
 	if (s.length() == 0)
@@ -408,30 +413,43 @@ list<int>* SuffixTrieNode::search(string s)
 	// if there is an edge from the current node of suffix trie,
 	// follow the edge.
 	if (children[s.at(0)] != NULL)
-		return (children[s.at(0)])->search(s.substr(1));
+		return (children[s.at(0)])->_Search(s.substr(1));
  
 	// If there is no edge, pattern doesn’t exist in text
-	else return NULL;
+	else
+		return NULL;
 }
 
-void SuffixTrie::search(string pat)
+int SuffixTrie::_search(string pat)
 {
 	// Let us call recursive search function for root of Trie.
 	// We get a list of all indexes (where pat is present in text) in
 	// variable 'result'
-	list<int> *result = root.search(pat);
+	list<int> *result = root._Search(pat);
  
 	// Check if the list of indexes is empty or not
 	if (result == NULL)
-		cout << "Pattern not found" << endl;
+	{
+		//cout << "Pattern not found" << endl;
+		return -1;
+	}
 	else
 	{
-	   list<int>::iterator i;
-	   int patLen = pat.length();
-	   for (i = result->begin(); i != result->end(); ++i)
-		 cout << "Pattern found at position " << *i - patLen<< endl;
-		 return;
+		list<int>::iterator i;
+		int patLen = pat.length();
+		for (i = result->begin(); i != result->end(); ++i)
+		{
+			//cout << "Pattern found at position " << *i - patLen<< endl;
+			return (*i - patLen);
+		}
+		return -1;
 	}
+}
+
+int suffixTrieSearch(string text,string pattern)
+{
+	SuffixTrie S(text);
+	return S._search(pattern);
 }
 
 #if 0
@@ -506,7 +524,7 @@ int main()
 			case 7:
 				cout<<"Pattern matching using Suffix Trie"<<endl;
 				SuffixTrie S(text);
-				S.search(pattern);
+				S._search(pattern);
 				break;
 		}
 	}
