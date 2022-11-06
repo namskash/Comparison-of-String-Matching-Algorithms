@@ -27,7 +27,7 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	english["SuffixTrie"] = {0,0};
 
 	ifstream fin;
-	fin.open("D:/NK/PES CS Engineering/Sem V/AA/Project/Testcases/english.txt");
+	fin.open("../Testcases/english.txt");
 
 //#1. Naive
 	auto start = high_resolution_clock::now();	// get accurate start clock time
@@ -145,7 +145,7 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	binary["SuffixTrie"] = {0,0};
 
 	ifstream fin;
-	fin.open("D:/NK/PES CS Engineering/Sem V/AA/Project/Testcases/binary.txt");
+	fin.open("../Testcases/binary.txt");
 
 //#1. Naive
 	auto start = high_resolution_clock::now();	// get accurate start clock time
@@ -263,7 +263,7 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	DNA["SuffixTrie"] = {0,0};
 
 	ifstream fin;
-	fin.open("D:/NK/PES CS Engineering/Sem V/AA/Project/Testcases/DNA.txt");
+	fin.open("../Testcases/DNA.txt");
 
 //#1. Naive
 	auto start = high_resolution_clock::now();	// get accurate start clock time
@@ -381,7 +381,7 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	random["SuffixTrie"] = {0,0};
 
 	ifstream fin;
-	fin.open("D:/NK/PES CS Engineering/Sem V/AA/Project/Testcases/random.txt");
+	fin.open("../Testcases/random.txt");
 
 //#1. Naive
 	auto start = high_resolution_clock::now();	// get accurate start clock time
@@ -491,7 +491,7 @@ void writeToFile(
 				)
 {
 	ofstream fout;
-	fout.open("D:/NK/PES CS Engineering/Sem V/AA/Project/Testcases/englishOutput.txt");
+	fout.open("../Testcases/englishOutput.txt");
 
 	fout.close();
 }
