@@ -11,10 +11,10 @@ typedef struct data
 	//int fails;
 }_data;
 
-void runAlgos_English(unordered_map<string,_data> &english, int &comparisons);
-void runAlgos_Binary(unordered_map<string,_data> &binary, int &comparisons);
-void runAlgos_DNA(unordered_map<string,_data> &DNA, int &comparisons);
-void runAlgos_Random(unordered_map<string,_data> &random, int &comparisons);
+void runAlgos_English(unordered_map<string,_data> &english);
+void runAlgos_Binary(unordered_map<string,_data> &binary);
+void runAlgos_DNA(unordered_map<string,_data> &DNA);
+void runAlgos_Random(unordered_map<string,_data> &random);
 void writeToFile(
 					unordered_map<string,_data> &english,
 					unordered_map<string,_data> &binary,
