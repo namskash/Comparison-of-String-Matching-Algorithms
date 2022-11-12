@@ -20,7 +20,7 @@ static bool _unique(string pattern)
 	return 1;
 }
 
-int acceleratedNaive(string text,string pattern)
+int acceleratedNaive(string text,string pattern,int &comparisons)
 {
 	int n = text.length();
 	int m = pattern.length();
@@ -28,6 +28,7 @@ int acceleratedNaive(string text,string pattern)
 	int j = 0;
 	while(i < n)
 	{
+		++comparisons;
 		if(pattern[j] == text[i])
 		{
 			if(j == (m - 1))
@@ -50,7 +51,7 @@ int acceleratedNaive(string text,string pattern)
 	return -1;
 }
 
-int Naive(string text,string pattern)
+int Naive(string text,string pattern,int &comparisons)
 {
 	int n = text.length();
 	int m = pattern.length();
@@ -59,6 +60,7 @@ int Naive(string text,string pattern)
 		int j;
 		for(j = 0;j < m;++j)
 		{
+			++comparisons;
 			if(text[i + j] != pattern[j])
 			{
 				break;
@@ -74,7 +76,7 @@ int Naive(string text,string pattern)
 	return -1;
 }
 
-static vector<int> _kmpPrefixFunction(string pattern)
+static vector<int> _kmpPrefixFunction(string pattern,int &comparisons)
 {
 	int m = pattern.size();
 	pattern = ' ' + pattern;
@@ -83,10 +85,12 @@ static vector<int> _kmpPrefixFunction(string pattern)
 	int k = 0;
 	for(int q = 2;q <= m;++q)
 	{
+		++comparisons;
 		while((k > 0) && (pattern[k + 1] != pattern[q]))
 		{
 			k = prefix[k];
 		}
+		++comparisons;
 		if(pattern[k + 1] == pattern[q])
 		{
 			k = k + 1;
@@ -96,20 +100,22 @@ static vector<int> _kmpPrefixFunction(string pattern)
 	return prefix;
 }
 
-int kmp_match(string text,string pattern)
+int kmp_match(string text,string pattern,int &comparisons)
 {
 	int n = text.length();
 	int m = pattern.length();
-	vector<int> prefix = _kmpPrefixFunction(pattern);
+	vector<int> prefix = _kmpPrefixFunction(pattern,comparisons);
 	int j = 0;
 	text = ' ' + text;
 	pattern = ' ' + pattern;
 	for(int i = 1;i <= n;++i)
 	{
+		++comparisons;
 		while((j > 0) && (pattern[j + 1] != text[i]))
 		{
 			j = prefix[j];
 		}
+		++comparisons;
 		if(pattern[j + 1] == text[i])
 		{
 			j = j + 1;
@@ -124,9 +130,11 @@ int kmp_match(string text,string pattern)
 	return -1;
 }
 
-static int _getNextState(string pat, int M, int state, int x)
+//to check for state or not ?
+
+static int _getNextState(string pat, int M, int state, int x, int &comparisons)
 {
-	
+	++comparisons;
 	if (state < M && x == pat[state])
 	{
 		return state+1;
@@ -136,10 +144,12 @@ static int _getNextState(string pat, int M, int state, int x)
  
 	for (ns = state; ns > 0; ns--)
 	{
+		++comparisons;
 		if (pat[ns-1] == x)
 		{
 			for (i = 0; i < ns-1; i++)
 			{
+				++comparisons;
 				if (pat[i] != pat[state-ns+1+i])
 				{
 					break;
@@ -155,26 +165,26 @@ static int _getNextState(string pat, int M, int state, int x)
 	return 0;
 }
 
-static void _computeTF(string pat, int M, int TF[][NO_OF_CHARS])
+static void _computeTF(string pat, int M, int TF[][NO_OF_CHARS],int &comparisons)
 {
 	int state, x;
 	for (state = 0; state <= M; ++state)
 	{
 		for (x = 0; x < NO_OF_CHARS; ++x)
 		{
-			TF[state][x] = _getNextState(pat, M, state, x);
+			TF[state][x] = _getNextState(pat, M, state, x,comparisons);
 		}
 	}
 }
 
-int fsm(string text, string pat)
+int fsm(string text, string pat,int &comparisons)
 {
 	int M = pat.size();
 	int N = text.size();
  
 	int TF[M+1][NO_OF_CHARS];
  
-	_computeTF(pat, M, TF);
+	_computeTF(pat, M, TF,comparisons);
  
 	int i, state=0;
 	for (i = 0; i < N; i++)
@@ -190,7 +200,7 @@ int fsm(string text, string pat)
 	return -1;
 }
 
-int rabinKarp(string text,string pattern,int q)
+int rabinKarp(string text,string pattern,int q,int &comparisons)
 {
 	int m = pattern.size();
 	int n = text.size();
@@ -212,10 +222,12 @@ int rabinKarp(string text,string pattern,int q)
 	
 	for(i = 0;i <= n - m;++i)
 	{
+		++comparisons;
 		if(p == t)
 		{
 			for(j = 0;j < m;++j)
 			{
+				++comparisons;
 				if(text[i + j] != pattern[j])
 				{
 					break;
@@ -240,7 +252,7 @@ int rabinKarp(string text,string pattern,int q)
 	return -1;
 }
 
-static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m)
+static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m,int &comparisons)
 {
 	// m is the length of pattern 
 	int i=m, j=m+1;
@@ -251,6 +263,8 @@ static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m)
 		/*if character at position i-1 is not equivalent to
 		  character at j-1, then continue searching to right
 		  of the pattern for border */
+
+		++comparisons;
 		while(j<=m && pat[i-1] != pat[j-1])
 		{
 			/* the character preceding the occurrence of t in 
@@ -289,7 +303,7 @@ static void _preprocessBadShift(int *shift, int *bpos, string pat, int m)
 	}
 }
 
-int boyerMoore(string text, string pat)
+int boyerMoore(string text, string pat,int &comparisons)
 {
 	// s is shift of the pattern with respect to text
 	int s=0, j;
@@ -305,7 +319,7 @@ int boyerMoore(string text, string pat)
 	}
   
 	//do preprocessing
-	_preprocessStrongSuffix(shift, bpos, pat, m);
+	_preprocessStrongSuffix(shift, bpos, pat, m,comparisons);
 	_preprocessBadShift(shift, bpos, pat, m);
   
 	while(s <= n-m)
@@ -315,6 +329,8 @@ int boyerMoore(string text, string pat)
   
 		/* Keep reducing index j of pattern while characters of
 			 pattern and text are matching at this shift s*/
+		
+		++comparisons;
 		while(j >= 0 && pat[j] == text[s+j])
 			j--;
   
