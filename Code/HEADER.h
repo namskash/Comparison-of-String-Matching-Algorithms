@@ -22,12 +22,15 @@ void writeToFile(
 					unordered_map<string,_data> &random
 				);
 // server:
-int Naive(string text,string pattern);
-int acceleratedNaive(string text,string pattern);
-int boyerMoore(string text, string pat);
-int rabinKarp(string pattern,string text,int q);
-int fsm(string pat, string txt);
-int kmp_match(string text,string pattern);
+int Naive(string text,string pattern,int &comparisons);
+int acceleratedNaive(string text,string pattern,int &comparisons);
+int boyerMoore(string text, string pattern,int &comparisons);
+int rabinKarp(string text,string pattern,int q,int &comparisons);
+int fsm(string text, string pattern,int &comparisons);
+int kmp_match(string text,string pattern,int &comparisons);
 int suffixTrieSearch(string text,string pattern);
+
+// misc:
+
 
 #endif
