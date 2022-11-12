@@ -35,96 +35,105 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		Naive(text,pattern);
+		Naive(text,pattern,comparisons);
 	}
 
 	auto stop = high_resolution_clock::now();	// get accurate stop clock time
 	microseconds duration = duration_cast<microseconds>(stop - start);
 
-	//english["Naive"].comparisons += comparisons;
+	english["Naive"].comparisons += comparisons;
 	english["Naive"].time += duration.count();
 
-	cout<<"Naive time taken: "<<english["Naive"].time<<endl;
+	cout<<"Naive time taken : "<<english["Naive"].time<<" ns\t\t";
+	cout<<"Naive comparisons: "<<english["Naive"].comparisons<<"\n";
 
 //#3. Boyer Moore
 	fin.clear();
 	fin.seekg(0);
-
+	comparisons = 0;
+	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		boyerMoore(text,pattern);
+		boyerMoore(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//english["BoyerMoore"].comparisons += comparisons;
+	english["BoyerMoore"].comparisons += comparisons;
 	english["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken: "<<english["BoyerMoore"].time<<endl;
+	cout<<"Boyer Moore time taken : "<<english["BoyerMoore"].time<<" ns\t";
+	cout<<"Boyer Moore comparisons: "<<english["BoyerMoore"].comparisons<<"\n";
 
 //#4. Rabin Karp
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		rabinKarp(text,pattern,223);
+		rabinKarp(text,pattern,223,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//english["RabinKarp"].comparisons += comparisons;
+	english["RabinKarp"].comparisons += comparisons;
 	english["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken: "<<english["RabinKarp"].time<<endl;
+	cout<<"Rabin Karp time taken : "<<english["RabinKarp"].time<<" ns\t";
+	cout<<"Rabin Karp comparisons: "<<english["RabinKarp"].comparisons<<"\n";
 
 //#5. FSM
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		fsm(text,pattern);
+		fsm(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//english["RabinKarp"].comparisons += comparisons;
+	english["FSM"].comparisons += comparisons;
 	english["FSM"].time += duration.count();
 
-	cout<<"FSM time taken: "<<english["FSM"].time<<endl;
+	cout<<"FSM time taken : "<<english["FSM"].time<<" ns\t\t";
+	cout<<"FSM comparisons: "<<english["FSM"].comparisons<<"\n";
 
 //#6. KMP
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		kmp_match(text,pattern);
+		kmp_match(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//english["RabinKarp"].comparisons += comparisons;
+	english["KMP"].comparisons += comparisons;
 	english["KMP"].time += duration.count();
 
-	cout<<"KMP time taken: "<<english["KMP"].time<<endl;
+	cout<<"KMP time taken : "<<english["KMP"].time<<" ns\t\t";
+	cout<<"KMP comparisons: "<<english["KMP"].comparisons<<"\n";
 	
 	fin.close();
 }
@@ -153,96 +162,105 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		Naive(text,pattern);
+		Naive(text,pattern,comparisons);
 	}
 
 	auto stop = high_resolution_clock::now();	// get accurate stop clock time
 	microseconds duration = duration_cast<microseconds>(stop - start);
 
-	//binary["Naive"].comparisons += comparisons;
+	binary["Naive"].comparisons += comparisons;
 	binary["Naive"].time += duration.count();
 
-	cout<<"Naive time taken: "<<binary["Naive"].time<<endl;
+	cout<<"Naive time taken : "<<binary["Naive"].time<<" ns\t\t";
+	cout<<"Naive comparisons: "<<binary["Naive"].comparisons<<"\n";
 
 //#3. Boyer Moore
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		boyerMoore(text,pattern);
+		boyerMoore(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//binary["BoyerMoore"].comparisons += comparisons;
+	binary["BoyerMoore"].comparisons += comparisons;
 	binary["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken: "<<binary["BoyerMoore"].time<<endl;
+	cout<<"Boyer Moore time taken : "<<binary["BoyerMoore"].time<<" ns\t";
+	cout<<"Boyer Moore comparisons: "<<binary["BoyerMoore"].comparisons<<"\n";
 
 //#4. Rabin Karp
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		rabinKarp(text,pattern,223);
+		rabinKarp(text,pattern,223,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//binary["RabinKarp"].comparisons += comparisons;
+	binary["RabinKarp"].comparisons += comparisons;
 	binary["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken: "<<binary["RabinKarp"].time<<endl;
+	cout<<"Rabin Karp time taken : "<<binary["RabinKarp"].time<<" ns\t";
+	cout<<"Rabin Karp comparisons: "<<binary["RabinKarp"].comparisons<<"\n";
 
 //#5. FSM
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		fsm(text,pattern);
+		fsm(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//binary["RabinKarp"].comparisons += comparisons;
+	binary["FSM"].comparisons += comparisons;
 	binary["FSM"].time += duration.count();
 
-	cout<<"FSM time taken: "<<binary["FSM"].time<<endl;
+	cout<<"FSM time taken: "<<binary["FSM"].time<<" ns\t\t";
+	cout<<"FSM comparisons: "<<binary["FSM"].comparisons<<"\n";
 
 //#6. KMP
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		kmp_match(text,pattern);
+		kmp_match(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//binary["RabinKarp"].comparisons += comparisons;
+	binary["KMP"].comparisons += comparisons;
 	binary["KMP"].time += duration.count();
 
-	cout<<"KMP time taken: "<<binary["KMP"].time<<endl;
+	cout<<"KMP time taken: "<<binary["KMP"].time<<" ns\t\t";
+	cout<<"KMP comparisons: "<<binary["KMP"].comparisons<<"\n";
 	
 	fin.close();
 }
@@ -271,96 +289,105 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		Naive(text,pattern);
+		Naive(text,pattern,comparisons);
 	}
 
 	auto stop = high_resolution_clock::now();	// get accurate stop clock time
 	microseconds duration = duration_cast<microseconds>(stop - start);
 
-	//DNA["Naive"].comparisons += comparisons;
+	DNA["Naive"].comparisons += comparisons;
 	DNA["Naive"].time += duration.count();
 
-	cout<<"Naive time taken: "<<DNA["Naive"].time<<endl;
+	cout<<"Naive time taken : "<<DNA["Naive"].time<<" ns\t\t";
+	cout<<"Naive comparisons: "<<DNA["Naive"].comparisons<<"\n";
 
 //#3. Boyer Moore
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		boyerMoore(text,pattern);
+		boyerMoore(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//DNA["BoyerMoore"].comparisons += comparisons;
+	DNA["BoyerMoore"].comparisons += comparisons;
 	DNA["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken: "<<DNA["BoyerMoore"].time<<endl;
+	cout<<"Boyer Moore time taken : "<<DNA["BoyerMoore"].time<<" ns\t";
+	cout<<"Boyer Moore comparisons: "<<DNA["BoyerMoore"].comparisons<<"\n";
 
 //#4. Rabin Karp
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		rabinKarp(text,pattern,223);
+		rabinKarp(text,pattern,223,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//DNA["RabinKarp"].comparisons += comparisons;
+	DNA["RabinKarp"].comparisons += comparisons;
 	DNA["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken: "<<DNA["RabinKarp"].time<<endl;
+	cout<<"Rabin Karp time taken : "<<DNA["RabinKarp"].time<<" ns\t";
+	cout<<"Rabin Karp comparisons: "<<DNA["RabinKarp"].comparisons<<"\n";
 
 //#5. FSM
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		fsm(text,pattern);
+		fsm(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//DNA["FSM"].comparisons += comparisons;
+	DNA["FSM"].comparisons += comparisons;
 	DNA["FSM"].time += duration.count();
 
-	cout<<"FSM time taken: "<<DNA["FSM"].time<<endl;
+	cout<<"FSM time taken : "<<DNA["FSM"].time<<" ns\t\t";
+	cout<<"FSM comparisons: "<<DNA["FSM"].comparisons<<"\n";
 
 //#6. KMP
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		kmp_match(text,pattern);
+		kmp_match(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//DNA["KMP"].comparisons += comparisons;
+	DNA["KMP"].comparisons += comparisons;
 	DNA["KMP"].time += duration.count();
 
-	cout<<"KMP time taken: "<<DNA["KMP"].time<<endl;
+	cout<<"KMP time taken : "<<DNA["KMP"].time<<" ns\t\t";
+	cout<<"KMP comparisons: "<<DNA["KMP"].comparisons<<"\n";
 	
 	fin.close();
 }
@@ -389,96 +416,105 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		Naive(text,pattern);
+		Naive(text,pattern,comparisons);
 	}
 
 	auto stop = high_resolution_clock::now();	// get accurate stop clock time
 	microseconds duration = duration_cast<microseconds>(stop - start);
 
-	//random["Naive"].comparisons += comparisons;
+	random["Naive"].comparisons += comparisons;
 	random["Naive"].time += duration.count();
 
-	cout<<"Naive time taken: "<<random["Naive"].time<<endl;
+	cout<<"Naive time taken : "<<random["Naive"].time<<" ns\t\t";
+	cout<<"Naive comparisons: "<<random["Naive"].comparisons<<"\n";
 
 //#3. Boyer Moore
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		boyerMoore(text,pattern);
+		boyerMoore(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//random["BoyerMoore"].comparisons += comparisons;
+	random["BoyerMoore"].comparisons += comparisons;
 	random["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken: "<<random["BoyerMoore"].time<<endl;
+	cout<<"Boyer Moore time taken : "<<random["BoyerMoore"].time<<" ns\t";
+	cout<<"Boyer Moore comparisons: "<<random["BoyerMoore"].comparisons<<"\n";
 
 //#4. Rabin Karp
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		rabinKarp(text,pattern,223);
+		rabinKarp(text,pattern,223,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//random["RabinKarp"].comparisons += comparisons;
+	random["RabinKarp"].comparisons += comparisons;
 	random["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken: "<<random["RabinKarp"].time<<endl;
+	cout<<"Rabin Karp time taken : "<<random["RabinKarp"].time<<" ns\t";
+	cout<<"Rabin Karp comparisons: "<<random["RabinKarp"].comparisons<<"\n";
 
 //#5. FSM
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		fsm(text,pattern);
+		fsm(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//random["FSM"].comparisons += comparisons;
+	random["FSM"].comparisons += comparisons;
 	random["FSM"].time += duration.count();
 
-	cout<<"FSM time taken: "<<random["FSM"].time<<endl;
+	cout<<"FSM time taken : "<<random["FSM"].time<<" ns\t\t";
+	cout<<"FSM comparisons: "<<random["FSM"].comparisons<<"\n";
 
 //#6. KMP
 	fin.clear();
 	fin.seekg(0);
+	comparisons = 0;
 	
 	start = high_resolution_clock::now();	// get accurate start clock time
 	
 	while(getline(fin,text))		// get pattern for every string
 	{
 		getline(fin,pattern);
-		kmp_match(text,pattern);
+		kmp_match(text,pattern,comparisons);
 	}
 
 	stop = high_resolution_clock::now();	// get accurate stop clock time
 	duration = duration_cast<microseconds>(stop - start);
 
-	//random["KMP"].comparisons += comparisons;
+	random["KMP"].comparisons += comparisons;
 	random["KMP"].time += duration.count();
 
-	cout<<"KMP time taken: "<<random["KMP"].time<<endl;
+	cout<<"KMP time taken : "<<random["KMP"].time<<" ns\t\t";
+	cout<<"KMP comparisons: "<<random["KMP"].comparisons<<"\n";
 	
 	fin.close();
 }
