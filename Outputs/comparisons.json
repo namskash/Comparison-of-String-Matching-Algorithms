@@ -1,0 +1,6 @@
+{
+	"English": { "KMP": 1753930,  "Naive": 881216,  "BoyerMoore": 764562,  "RabinKarp": 853593,  "FSM": 20433078 },
+	"Binary": { "KMP": 1600768,  "Naive": 1199237,  "BoyerMoore": 460882,  "RabinKarp": 639970,  "FSM": 100839425 },
+	"DNA": { "KMP": 1796766,  "Naive": 1001637,  "BoyerMoore": 552740,  "RabinKarp": 771021,  "FSM": 102458635 },
+	"Random": { "KMP": 1649294,  "Naive": 788812,  "BoyerMoore": 760919,  "RabinKarp": 781854,  "FSM": 101639004 }
+}
