@@ -88,6 +88,7 @@ static vector<int> _kmpPrefixFunction(string pattern,int &comparisons)
 		++comparisons;
 		while((k > 0) && (pattern[k + 1] != pattern[q]))
 		{
+			++comparisons;
 			k = prefix[k];
 		}
 		++comparisons;
@@ -113,6 +114,7 @@ int kmp_match(string text,string pattern,int &comparisons)
 		++comparisons;
 		while((j > 0) && (pattern[j + 1] != text[i]))
 		{
+			++comparisons;
 			j = prefix[j];
 		}
 		++comparisons;
@@ -132,10 +134,10 @@ int kmp_match(string text,string pattern,int &comparisons)
 
 //to check for state or not ?
 
-static int _getNextState(string pat, int M, int state, int x, int &comparisons)
+static int _getNextState(string pattern, int M, int state, int x, int &comparisons)
 {
 	++comparisons;
-	if (state < M && x == pat[state])
+	if (state < M && x == pattern[state])
 	{
 		return state+1;
 	}
@@ -145,12 +147,12 @@ static int _getNextState(string pat, int M, int state, int x, int &comparisons)
 	for (ns = state; ns > 0; ns--)
 	{
 		++comparisons;
-		if (pat[ns-1] == x)
+		if (pattern[ns-1] == x)
 		{
 			for (i = 0; i < ns-1; i++)
 			{
 				++comparisons;
-				if (pat[i] != pat[state-ns+1+i])
+				if (pattern[i] != pattern[state-ns+1+i])
 				{
 					break;
 				}
@@ -165,26 +167,26 @@ static int _getNextState(string pat, int M, int state, int x, int &comparisons)
 	return 0;
 }
 
-static void _computeTF(string pat, int M, int TF[][NO_OF_CHARS],int &comparisons)
+static void _computeTF(string pattern, int M, int TF[][NO_OF_CHARS],int &comparisons)
 {
 	int state, x;
 	for (state = 0; state <= M; ++state)
 	{
 		for (x = 0; x < NO_OF_CHARS; ++x)
 		{
-			TF[state][x] = _getNextState(pat, M, state, x,comparisons);
+			TF[state][x] = _getNextState(pattern, M, state, x,comparisons);
 		}
 	}
 }
 
-int fsm(string text, string pat,int &comparisons)
+int fsm(string text, string pattern,int &comparisons)
 {
-	int M = pat.size();
+	int M = pattern.size();
 	int N = text.size();
  
 	int TF[M+1][NO_OF_CHARS];
  
-	_computeTF(pat, M, TF,comparisons);
+	_computeTF(pattern, M, TF,comparisons);
  
 	int i, state=0;
 	for (i = 0; i < N; i++)
@@ -252,7 +254,7 @@ int rabinKarp(string text,string pattern,int q,int &comparisons)
 	return -1;
 }
 
-static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m,int &comparisons)
+static void _preprocessStrongSuffix(int *shift, int *bpos, string pattern, int m,int &comparisons)
 {
 	// m is the length of pattern 
 	int i=m, j=m+1;
@@ -265,12 +267,13 @@ static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m,int
 		  of the pattern for border */
 
 		++comparisons;
-		while(j<=m && pat[i-1] != pat[j-1])
+		while(j<=m && pattern[i-1] != pattern[j-1])
 		{
 			/* the character preceding the occurrence of t in 
 			   pattern P is different than the mismatching character in P, 
 			   we stop skipping the occurrences and shift the pattern
 			   from i to j */
+			++comparisons;
 			if (shift[j]==0)
 				shift[j] = j-i;
   
@@ -285,7 +288,7 @@ static void _preprocessStrongSuffix(int *shift, int *bpos, string pat, int m,int
 	}
 }
 
-static void _preprocessBadShift(int *shift, int *bpos, string pat, int m)
+static void _preprocessBadShift(int *shift, int *bpos, string pattern, int m)
 {
 	int i, j;
 	j = bpos[0];
@@ -303,11 +306,11 @@ static void _preprocessBadShift(int *shift, int *bpos, string pat, int m)
 	}
 }
 
-int boyerMoore(string text, string pat,int &comparisons)
+int boyerMoore(string text, string pattern,int &comparisons)
 {
 	// s is shift of the pattern with respect to text
 	int s=0, j;
-	int m = pat.size();
+	int m = pattern.size();
 	int n = text.size();
   
 	int bpos[m+1], shift[m+1];
@@ -319,8 +322,8 @@ int boyerMoore(string text, string pat,int &comparisons)
 	}
   
 	//do preprocessing
-	_preprocessStrongSuffix(shift, bpos, pat, m,comparisons);
-	_preprocessBadShift(shift, bpos, pat, m);
+	_preprocessStrongSuffix(shift, bpos, pattern, m,comparisons);
+	_preprocessBadShift(shift, bpos, pattern, m);
   
 	while(s <= n-m)
 	{
@@ -331,8 +334,11 @@ int boyerMoore(string text, string pat,int &comparisons)
 			 pattern and text are matching at this shift s*/
 		
 		++comparisons;
-		while(j >= 0 && pat[j] == text[s+j])
+		while(j >= 0 && pattern[j] == text[s+j])
+		{
+			++comparisons;
 			j--;
+		}
   
 		/* If the pattern is present at the current shift, then index j
 			 will become -1 after the above loop */
@@ -343,7 +349,7 @@ int boyerMoore(string text, string pat,int &comparisons)
 			//s += shift[0];
 		}
 		else
-			/*pat[i] != pat[s+j] so shift the pattern
+			/*pattern[i] != pattern[s+j] so shift the pattern
 			  shift[j+1] times  */
 			s += shift[j+1];
 	}
@@ -377,7 +383,7 @@ public:
 	// list containing all indexes where pattern is present.
 	// The returned indexes are indexes of last characters
 	// of matched text.
-	list<int>* _Search(string pat);
+	list<int>* _Search(string pattern);
 };
 
 class SuffixTrie
@@ -396,7 +402,7 @@ public:
 	}
  
 	// Function to searches a pattern in this suffix trie.
-	int _search(string pat);
+	int _search(string pattern);
 };
 
 
@@ -436,12 +442,12 @@ list<int>* _SuffixTrieNode::_Search(string s)
 		return NULL;
 }
 
-int SuffixTrie::_search(string pat)
+int SuffixTrie::_search(string pattern)
 {
 	// Let us call recursive search function for root of Trie.
 	// We get a list of all indexes (where pat is present in text) in
 	// variable 'result'
-	list<int> *result = root._Search(pat);
+	list<int> *result = root._Search(pattern);
  
 	// Check if the list of indexes is empty or not
 	if (result == NULL)
@@ -452,7 +458,7 @@ int SuffixTrie::_search(string pat)
 	else
 	{
 		list<int>::iterator i;
-		int patLen = pat.length();
+		int patLen = pattern.length();
 		for (i = result->begin(); i != result->end(); ++i)
 		{
 			//cout << "Pattern found at position " << *i - patLen<< endl;
