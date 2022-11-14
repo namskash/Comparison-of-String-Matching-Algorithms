@@ -1,0 +1,150 @@
+Iteration 1:
+English:
+Naive		: 46884  ns 881216 comparisons
+Boyer Moore	: 15622  ns 690976 comparisons
+Rabin Karp	: 31246  ns 853593 comparisons
+FSM			: 649327 ns 20433078 comparisons
+KMP			: 15832  ns 1721948 comparisons
+
+Binary:
+Naive		: 31252  ns 804005 comparisons
+Boyer Moore	: 15612  ns 166305 comparisons
+Rabin Karp	: 15628  ns 438002 comparisons
+FSM			: 948758 ns 40290862 comparisons
+KMP			: 31250  ns 895706 comparisons
+
+DNA:
+Naive		: 31244  ns 971418 comparisons
+Boyer Moore	: 15627  ns 379183 comparisons
+Rabin Karp	: 15620  ns 744349 comparisons
+FSM			: 949416 ns 39349205 comparisons
+KMP			: 31383  ns 1520712 comparisons
+
+Random:
+Naive		: 15624  ns 771673 comparisons
+Boyer Moore	: 18145  ns 670520 comparisons
+Rabin Karp	: 15801  ns 763827 comparisons
+FSM			: 952886 ns 39991521 comparisons
+KMP			: 31333  ns 1562692 comparisons
+
+
+Iteration 2:
+English:
+Naive		: 31351  ns 881216 comparisons
+Boyer Moore	: 15625  ns 690976 comparisons
+Rabin Karp	: 26349  ns 853593 comparisons
+FSM			: 662940 ns 20433078 comparisons
+KMP			: 31332  ns 1721948 comparisons
+
+Binary:
+Naive		: 15623  ns 804005 comparisons
+Boyer Moore	: 15611  ns 166305 comparisons
+Rabin Karp	: 15652  ns 438002 comparisons
+FSM			: 1010578 ns 40290862 comparisons
+KMP			: 24016  ns 895706 comparisons
+
+DNA:
+Naive		: 23981  ns 971418 comparisons
+Boyer Moore	: 15992  ns 379183 comparisons
+Rabin Karp	: 23915  ns 744349 comparisons
+FSM			: 1169292 ns 39349205 comparisons
+KMP			: 24102  ns 1520712 comparisons
+
+Random:
+Naive		: 24025  ns 771673 comparisons
+Boyer Moore	: 16269  ns 670520 comparisons
+Rabin Karp	: 23975  ns 763827 comparisons
+FSM			: 964952 ns 39991521 comparisons
+KMP			: 24827  ns 1562692 comparisons
+
+
+Iteration 3:
+English:
+Naive		: 35507  ns 881216 comparisons
+Boyer Moore	: 30351  ns 690976 comparisons
+Rabin Karp	: 40609  ns 853593 comparisons
+FSM			: 657403 ns 20433078 comparisons
+KMP			: 15623  ns 1721948 comparisons
+
+Binary:
+Naive		: 31090  ns 804005 comparisons
+Boyer Moore	: 5717  ns 166305 comparisons
+Rabin Karp	: 16325  ns 438002 comparisons
+FSM			: 965301 ns 40290862 comparisons
+KMP			: 15619  ns 895706 comparisons
+
+DNA:
+Naive		: 31246  ns 971418 comparisons
+Boyer Moore	: 15626  ns 379183 comparisons
+Rabin Karp	: 15622  ns 744349 comparisons
+FSM			: 950684 ns 39349205 comparisons
+KMP			: 31246  ns 1520712 comparisons
+
+Random:
+Naive		: 15743  ns 771673 comparisons
+Boyer Moore	: 24180  ns 670520 comparisons
+Rabin Karp	: 31625  ns 763827 comparisons
+FSM			: 1053111 ns 39991521 comparisons
+KMP			: 31973  ns 1562692 comparisons
+
+
+Iteration 4:
+English:
+Naive		: 32327  ns 881216 comparisons
+Boyer Moore	: 25670  ns 690976 comparisons
+Rabin Karp	: 32120  ns 853593 comparisons
+FSM			: 724599 ns 20433078 comparisons
+KMP			: 24035  ns 1721948 comparisons
+
+Binary:
+Naive		: 24997  ns 804005 comparisons
+Boyer Moore	: 15627  ns 166305 comparisons
+Rabin Karp	: 15613  ns 438002 comparisons
+FSM			: 1014936 ns 40290862 comparisons
+KMP			: 23981  ns 895706 comparisons
+
+DNA:
+Naive		: 23992  ns 971418 comparisons
+Boyer Moore	: 15994  ns 379183 comparisons
+Rabin Karp	: 23904  ns 744349 comparisons
+FSM			: 947666 ns 39349205 comparisons
+KMP			: 31248  ns 1520712 comparisons
+
+Random:
+Naive		: 15629  ns 771673 comparisons
+Boyer Moore	: 15617  ns 670520 comparisons
+Rabin Karp	: 31249  ns 763827 comparisons
+FSM			: 946420 ns 39991521 comparisons
+KMP			: 31253  ns 1562692 comparisons
+
+
+Iteration 5:
+English:
+Naive		: 15714  ns 881216 comparisons
+Boyer Moore	: 15625  ns 690976 comparisons
+Rabin Karp	: 31249  ns 853593 comparisons
+FSM			: 645095 ns 20433078 comparisons
+KMP			: 15696  ns 1721948 comparisons
+
+Binary:
+Naive		: 31430  ns 804005 comparisons
+Boyer Moore	: 15621  ns 166305 comparisons
+Rabin Karp	: 15626  ns 438002 comparisons
+FSM			: 949603 ns 40290862 comparisons
+KMP			: 31249  ns 895706 comparisons
+
+DNA:
+Naive		: 15623  ns 971418 comparisons
+Boyer Moore	: 15624  ns 379183 comparisons
+Rabin Karp	: 31245  ns 744349 comparisons
+FSM			: 949607 ns 39349205 comparisons
+KMP			: 31235  ns 1520712 comparisons
+
+Random:
+Naive		: 15636  ns 771673 comparisons
+Boyer Moore	: 31259  ns 670520 comparisons
+Rabin Karp	: 15615  ns 763827 comparisons
+FSM			: 1025633 ns 39991521 comparisons
+KMP			: 32320  ns 1562692 comparisons
+
+
