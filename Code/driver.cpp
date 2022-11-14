@@ -491,6 +491,49 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	fin.close();
 }
 
+static void _write(string path,unordered_map<string,_data> &data)
+{
+
+	string t = "_t";	// time
+	string c = "_c";	// comparisons
+	
+//// temp variables that change in every iteration:
+	string algoType;
+	int time;
+	int comparisons;
+
+// uncomment to append to all output text files:
+	for(auto i:data)
+	{
+		algoType = i.first;
+		time = i.second.time;
+		comparisons = i.second.comparisons;
+
+
+		ofstream fout_t(path + algoType + t + ".txt",ios_base::app);
+		fout_t<<time<<", ";
+		fout_t.close();
+
+		ofstream fout_c(path + algoType + c + ".txt",ios_base::app);
+		fout_c<<comparisons<<", ";
+		fout_t.close();
+
+	}
+
+// uncomment to clear all output text files:
+	#if 0
+	for(auto i:data)
+	{
+		algoType = i.first;
+		time = i.second.time;
+		comparisons = i.second.comparisons;
+
+		ofstream fout_t(path + algoType + t + ".txt",ofstream::out | ofstream::trunc);
+		fout_t.close();
+	}
+	#endif
+}
+
 void writeToFile(
 					unordered_map<string,_data> &english,
 					unordered_map<string,_data> &binary,
@@ -498,10 +541,11 @@ void writeToFile(
 					unordered_map<string,_data> &random
 				)
 {
-	ofstream fout;
-	fout.open("../Testcases/englishOutput.txt");
-
-	fout.close();
+	_write("../Outputs/english",english);
+	_write("../Outputs/binary",binary);
+	_write("../Outputs/DNA",DNA);
+	_write("../Outputs/random",random);
+	
 }
 
 int main()
@@ -511,7 +555,7 @@ int main()
 	unordered_map<string,_data> DNA;
 	unordered_map<string,_data> random;
 
-	for(int i=0;i<1;++i)
+	for(int i=0;i<5;++i)
 	{
 		cout<<"Iteration "<<i+1<<":\n";
 		cout<<"English:\n";
@@ -522,7 +566,8 @@ int main()
 		runAlgos_DNA(DNA);
 		cout<<"\nRandom:\n";
 		runAlgos_Random(random);
-		// writeToFile(categories); // Write the output to your file
+		writeToFile(english,binary,DNA,random); // Write the output to your file
+		cout<<"\n\n";
 	}
 
 	return 0;
