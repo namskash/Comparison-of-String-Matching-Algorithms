@@ -514,10 +514,6 @@ static void _write(string path,unordered_map<string,_data> &data)
 		fout_t<<time<<", ";
 		fout_t.close();
 
-		ofstream fout_c(path + algoType + c + ".txt",ios_base::app);
-		fout_c<<comparisons<<", ";
-		fout_t.close();
-
 	}
 
 // uncomment to clear all output text files:
@@ -541,11 +537,64 @@ void writeToFile(
 					unordered_map<string,_data> &random
 				)
 {
+	// To append all time values: (individual files)
 	_write("../Outputs/english",english);
 	_write("../Outputs/binary",binary);
 	_write("../Outputs/DNA",DNA);
 	_write("../Outputs/random",random);
-	
+
+	// To write all comparisons into a single file:
+	ofstream fout("../Outputs/comparisons.json");
+	fout<<"{\n";
+
+	fout<<"\t\"English\": {";
+	for(auto i=english.begin();i!=english.end();++i)
+	{
+		if(i != english.begin())
+		{
+			fout<<", ";
+		}
+		fout<<" \""<<i->first<<"\": "<<i->second.comparisons;
+	}
+	fout<<" },\n";
+
+	fout<<"\t\"Binary\": {";
+	for(auto i=binary.begin();i!=binary.end();++i)
+	{
+		if(i != binary.begin())
+		{
+			fout<<", ";
+		}
+		fout<<" \""<<i->first<<"\": "<<i->second.comparisons;
+	}
+	fout<<" },\n";
+
+	fout<<"\t\"DNA\": {";
+	for(auto i=DNA.begin();i!=DNA.end();++i)
+	{
+		if(i != DNA.begin())
+		{
+			fout<<", ";
+		}
+		fout<<" \""<<i->first<<"\": "<<i->second.comparisons;
+	}
+	fout<<" },\n";
+
+	fout<<"\t\"Random\": {";
+	for(auto i=random.begin();i!=random.end();++i)
+	{
+		if(i != random.begin())
+		{
+			fout<<", ";
+		}
+		fout<<" \""<<i->first<<"\": "<<i->second.comparisons;
+	}
+	fout<<" }";
+
+
+	fout<<"\n}";
+
+	fout.close();
 }
 
 int main()
@@ -555,7 +604,7 @@ int main()
 	unordered_map<string,_data> DNA;
 	unordered_map<string,_data> random;
 
-	for(int i=0;i<5;++i)
+	for(int i=0;i<10;++i)
 	{
 		cout<<"Iteration "<<i+1<<":\n";
 		cout<<"English:\n";
