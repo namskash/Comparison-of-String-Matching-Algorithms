@@ -19,12 +19,10 @@ void runAlgos_English(unordered_map<string,_data> &english)
 
 	// Initialise all:
 	english["Naive"] = {0,0};
-	//english["AccelratedNaive"] = {0,0};	// Not a good case for accelerated naive
 	english["BoyerMoore"] = {0,0};
 	english["RabinKarp"] = {0,0};
 	english["FSM"] = {0,0};
 	english["KMP"] = {0,0};
-	english["SuffixTrie"] = {0,0};
 
 	ifstream fin;
 	fin.open("../Testcases/english.txt");
@@ -44,8 +42,7 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	english["Naive"].comparisons += comparisons;
 	english["Naive"].time += duration.count();
 
-	cout<<"Naive time taken : "<<english["Naive"].time<<" ns\t\t";
-	cout<<"Naive comparisons: "<<english["Naive"].comparisons<<"\n";
+	cout<<"Naive\t\t: "<<english["Naive"].time<<"  ns "<<english["Naive"].comparisons<<" comparisons\n";
 
 //#3. Boyer Moore
 	fin.clear();
@@ -66,8 +63,7 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	english["BoyerMoore"].comparisons += comparisons;
 	english["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken : "<<english["BoyerMoore"].time<<" ns\t";
-	cout<<"Boyer Moore comparisons: "<<english["BoyerMoore"].comparisons<<"\n";
+	cout<<"Boyer Moore\t: "<<english["BoyerMoore"].time<<"  ns "<<english["BoyerMoore"].comparisons<<" comparisons\n";
 
 //#4. Rabin Karp
 	fin.clear();
@@ -88,8 +84,7 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	english["RabinKarp"].comparisons += comparisons;
 	english["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken : "<<english["RabinKarp"].time<<" ns\t";
-	cout<<"Rabin Karp comparisons: "<<english["RabinKarp"].comparisons<<"\n";
+	cout<<"Rabin Karp\t: "<<english["RabinKarp"].time<<"  ns "<<english["RabinKarp"].comparisons<<" comparisons\n";
 
 //#5. FSM
 	fin.clear();
@@ -110,8 +105,7 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	english["FSM"].comparisons += comparisons;
 	english["FSM"].time += duration.count();
 
-	cout<<"FSM time taken : "<<english["FSM"].time<<" ns\t\t";
-	cout<<"FSM comparisons: "<<english["FSM"].comparisons<<"\n";
+	cout<<"FSM\t\t\t: "<<english["FSM"].time<<" ns "<<english["FSM"].comparisons<<" comparisons\n";
 
 //#6. KMP
 	fin.clear();
@@ -132,8 +126,7 @@ void runAlgos_English(unordered_map<string,_data> &english)
 	english["KMP"].comparisons += comparisons;
 	english["KMP"].time += duration.count();
 
-	cout<<"KMP time taken : "<<english["KMP"].time<<" ns\t\t";
-	cout<<"KMP comparisons: "<<english["KMP"].comparisons<<"\n";
+	cout<<"KMP\t\t\t: "<<english["KMP"].time<<"  ns "<<english["KMP"].comparisons<<" comparisons\n";
 	
 	fin.close();
 }
@@ -146,12 +139,10 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 
 	// Initialise all:
 	binary["Naive"] = {0,0};
-	//binary["AccelratedNaive"] = {0,0};	// Not a good case for accelerated naive
 	binary["BoyerMoore"] = {0,0};
 	binary["RabinKarp"] = {0,0};
 	binary["FSM"] = {0,0};
 	binary["KMP"] = {0,0};
-	binary["SuffixTrie"] = {0,0};
 
 	ifstream fin;
 	fin.open("../Testcases/binary.txt");
@@ -171,8 +162,7 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	binary["Naive"].comparisons += comparisons;
 	binary["Naive"].time += duration.count();
 
-	cout<<"Naive time taken : "<<binary["Naive"].time<<" ns\t\t";
-	cout<<"Naive comparisons: "<<binary["Naive"].comparisons<<"\n";
+	cout<<"Naive\t\t: "<<binary["Naive"].time<<"  ns "<<binary["Naive"].comparisons<<" comparisons\n";
 
 //#3. Boyer Moore
 	fin.clear();
@@ -193,8 +183,7 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	binary["BoyerMoore"].comparisons += comparisons;
 	binary["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken : "<<binary["BoyerMoore"].time<<" ns\t";
-	cout<<"Boyer Moore comparisons: "<<binary["BoyerMoore"].comparisons<<"\n";
+	cout<<"Boyer Moore\t: "<<binary["BoyerMoore"].time<<"  ns "<<binary["BoyerMoore"].comparisons<<" comparisons\n";
 
 //#4. Rabin Karp
 	fin.clear();
@@ -215,8 +204,7 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	binary["RabinKarp"].comparisons += comparisons;
 	binary["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken : "<<binary["RabinKarp"].time<<" ns\t";
-	cout<<"Rabin Karp comparisons: "<<binary["RabinKarp"].comparisons<<"\n";
+	cout<<"Rabin Karp\t: "<<binary["RabinKarp"].time<<"  ns "<<binary["RabinKarp"].comparisons<<" comparisons\n";
 
 //#5. FSM
 	fin.clear();
@@ -237,8 +225,7 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	binary["FSM"].comparisons += comparisons;
 	binary["FSM"].time += duration.count();
 
-	cout<<"FSM time taken: "<<binary["FSM"].time<<" ns\t\t";
-	cout<<"FSM comparisons: "<<binary["FSM"].comparisons<<"\n";
+	cout<<"FSM\t\t\t: "<<binary["FSM"].time<<" ns "<<binary["FSM"].comparisons<<" comparisons\n";
 
 //#6. KMP
 	fin.clear();
@@ -259,8 +246,7 @@ void runAlgos_Binary(unordered_map<string,_data> &binary)
 	binary["KMP"].comparisons += comparisons;
 	binary["KMP"].time += duration.count();
 
-	cout<<"KMP time taken: "<<binary["KMP"].time<<" ns\t\t";
-	cout<<"KMP comparisons: "<<binary["KMP"].comparisons<<"\n";
+	cout<<"KMP\t\t\t: "<<binary["KMP"].time<<"  ns "<<binary["KMP"].comparisons<<" comparisons\n";
 	
 	fin.close();
 }
@@ -273,12 +259,10 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	
 	// Initialise all:
 	DNA["Naive"] = {0,0};
-	//DNA["AccelratedNaive"] = {0,0};	// Not a good case for accelerated naive
 	DNA["BoyerMoore"] = {0,0};
 	DNA["RabinKarp"] = {0,0};
 	DNA["FSM"] = {0,0};
 	DNA["KMP"] = {0,0};
-	DNA["SuffixTrie"] = {0,0};
 
 	ifstream fin;
 	fin.open("../Testcases/DNA.txt");
@@ -298,8 +282,7 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	DNA["Naive"].comparisons += comparisons;
 	DNA["Naive"].time += duration.count();
 
-	cout<<"Naive time taken : "<<DNA["Naive"].time<<" ns\t\t";
-	cout<<"Naive comparisons: "<<DNA["Naive"].comparisons<<"\n";
+	cout<<"Naive\t\t: "<<DNA["Naive"].time<<"  ns "<<DNA["Naive"].comparisons<<" comparisons\n";
 
 //#3. Boyer Moore
 	fin.clear();
@@ -320,8 +303,7 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	DNA["BoyerMoore"].comparisons += comparisons;
 	DNA["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken : "<<DNA["BoyerMoore"].time<<" ns\t";
-	cout<<"Boyer Moore comparisons: "<<DNA["BoyerMoore"].comparisons<<"\n";
+	cout<<"Boyer Moore\t: "<<DNA["BoyerMoore"].time<<"  ns "<<DNA["BoyerMoore"].comparisons<<" comparisons\n";
 
 //#4. Rabin Karp
 	fin.clear();
@@ -342,8 +324,7 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	DNA["RabinKarp"].comparisons += comparisons;
 	DNA["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken : "<<DNA["RabinKarp"].time<<" ns\t";
-	cout<<"Rabin Karp comparisons: "<<DNA["RabinKarp"].comparisons<<"\n";
+	cout<<"Rabin Karp\t: "<<DNA["RabinKarp"].time<<"  ns "<<DNA["RabinKarp"].comparisons<<" comparisons\n";
 
 //#5. FSM
 	fin.clear();
@@ -364,8 +345,7 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	DNA["FSM"].comparisons += comparisons;
 	DNA["FSM"].time += duration.count();
 
-	cout<<"FSM time taken : "<<DNA["FSM"].time<<" ns\t\t";
-	cout<<"FSM comparisons: "<<DNA["FSM"].comparisons<<"\n";
+	cout<<"FSM\t\t\t: "<<DNA["FSM"].time<<" ns "<<DNA["FSM"].comparisons<<" comparisons\n";
 
 //#6. KMP
 	fin.clear();
@@ -386,8 +366,7 @@ void runAlgos_DNA(unordered_map<string,_data> &DNA)
 	DNA["KMP"].comparisons += comparisons;
 	DNA["KMP"].time += duration.count();
 
-	cout<<"KMP time taken : "<<DNA["KMP"].time<<" ns\t\t";
-	cout<<"KMP comparisons: "<<DNA["KMP"].comparisons<<"\n";
+	cout<<"KMP\t\t\t: "<<DNA["KMP"].time<<"  ns "<<DNA["KMP"].comparisons<<" comparisons\n";
 	
 	fin.close();
 }
@@ -400,12 +379,10 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 
 	// Initialise all:
 	random["Naive"] = {0,0};
-	//random["AccelratedNaive"] = {0,0};	// Not a good case for accelerated naive
 	random["BoyerMoore"] = {0,0};
 	random["RabinKarp"] = {0,0};
 	random["FSM"] = {0,0};
 	random["KMP"] = {0,0};
-	random["SuffixTrie"] = {0,0};
 
 	ifstream fin;
 	fin.open("../Testcases/random.txt");
@@ -425,8 +402,7 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	random["Naive"].comparisons += comparisons;
 	random["Naive"].time += duration.count();
 
-	cout<<"Naive time taken : "<<random["Naive"].time<<" ns\t\t";
-	cout<<"Naive comparisons: "<<random["Naive"].comparisons<<"\n";
+	cout<<"Naive\t\t: "<<random["Naive"].time<<"  ns "<<random["Naive"].comparisons<<" comparisons\n";
 
 //#3. Boyer Moore
 	fin.clear();
@@ -447,8 +423,7 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	random["BoyerMoore"].comparisons += comparisons;
 	random["BoyerMoore"].time += duration.count();
 
-	cout<<"Boyer Moore time taken : "<<random["BoyerMoore"].time<<" ns\t";
-	cout<<"Boyer Moore comparisons: "<<random["BoyerMoore"].comparisons<<"\n";
+	cout<<"Boyer Moore\t: "<<random["BoyerMoore"].time<<"  ns "<<random["BoyerMoore"].comparisons<<" comparisons\n";
 
 //#4. Rabin Karp
 	fin.clear();
@@ -469,8 +444,7 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	random["RabinKarp"].comparisons += comparisons;
 	random["RabinKarp"].time += duration.count();
 
-	cout<<"Rabin Karp time taken : "<<random["RabinKarp"].time<<" ns\t";
-	cout<<"Rabin Karp comparisons: "<<random["RabinKarp"].comparisons<<"\n";
+	cout<<"Rabin Karp\t: "<<random["RabinKarp"].time<<"  ns "<<random["RabinKarp"].comparisons<<" comparisons\n";
 
 //#5. FSM
 	fin.clear();
@@ -491,8 +465,7 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	random["FSM"].comparisons += comparisons;
 	random["FSM"].time += duration.count();
 
-	cout<<"FSM time taken : "<<random["FSM"].time<<" ns\t\t";
-	cout<<"FSM comparisons: "<<random["FSM"].comparisons<<"\n";
+	cout<<"FSM\t\t\t: "<<random["FSM"].time<<" ns "<<random["FSM"].comparisons<<" comparisons\n";
 
 //#6. KMP
 	fin.clear();
@@ -513,8 +486,7 @@ void runAlgos_Random(unordered_map<string,_data> &random)
 	random["KMP"].comparisons += comparisons;
 	random["KMP"].time += duration.count();
 
-	cout<<"KMP time taken : "<<random["KMP"].time<<" ns\t\t";
-	cout<<"KMP comparisons: "<<random["KMP"].comparisons<<"\n";
+	cout<<"KMP\t\t\t: "<<random["KMP"].time<<"  ns "<<random["KMP"].comparisons<<" comparisons\n";
 	
 	fin.close();
 }
@@ -534,21 +506,24 @@ void writeToFile(
 
 int main()
 {
-	unordered_map<string,_data> english; // Each category: {# of key comparisons, time}
+	unordered_map<string,_data> english; // Each category: {# of key comparisons  time}
 	unordered_map<string,_data> binary;
 	unordered_map<string,_data> DNA;
 	unordered_map<string,_data> random;
 
-	cout<<"English:\n";
-	runAlgos_English(english);
-	cout<<"\nBinary:\n";
-	runAlgos_Binary(binary);
-	cout<<"\nDNA:\n";
-	runAlgos_DNA(DNA);
-	cout<<"\nRandom:\n";
-	runAlgos_Random(random);
-
-	// writeToFile(categories); // Write the output to your file
+	for(int i=0;i<1;++i)
+	{
+		cout<<"Iteration "<<i+1<<":\n";
+		cout<<"English:\n";
+		runAlgos_English(english);
+		cout<<"\nBinary:\n";
+		runAlgos_Binary(binary);
+		cout<<"\nDNA:\n";
+		runAlgos_DNA(DNA);
+		cout<<"\nRandom:\n";
+		runAlgos_Random(random);
+		// writeToFile(categories); // Write the output to your file
+	}
 
 	return 0;
 }
