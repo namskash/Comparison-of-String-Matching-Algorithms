@@ -14,7 +14,7 @@ for length in range(250,500,5):				# length of binary string (step by 5)		(25,50
 		text.append(choice(binary))
 	for i in range(0,length,5):
 		printListAsString(text)				# print text
-		pattern = text[i:i + randint(5,10)]	# slice text to get pattern
+		pattern = text[i:i + randint(5,20)]	# slice text to get pattern
 		printListAsString(pattern)
 	
 	printListAsString(text)					# print text one last time
