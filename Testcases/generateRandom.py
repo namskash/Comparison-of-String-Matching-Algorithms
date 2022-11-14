@@ -19,7 +19,7 @@ for length in range(250,500,5):				# (25,50,5) for sample
 		text.append(choice(characters))
 	for i in range(0,length,5):
 		printListAsString(text)				# print text
-		pattern = text[i:i + randint(5,10)]	# slice text to get pattern
+		pattern = text[i:i + randint(5,20)]	# slice text to get pattern
 		printListAsString(pattern)
 	
 	printListAsString(text)					# print text one last time
